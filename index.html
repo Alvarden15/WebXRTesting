@@ -30,11 +30,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WebARSecond.loader.js";
+      var loaderUrl = buildUrl + "/TestARWeb.loader.js";
       var config = {
-        dataUrl: buildUrl + "/WebARSecond.data",
-        frameworkUrl: buildUrl + "/WebARSecond.framework.js",
-        codeUrl: buildUrl + "/WebARSecond.wasm",
+        dataUrl: buildUrl + "/TestARWeb.data",
+        frameworkUrl: buildUrl + "/TestARWeb.framework.js",
+        codeUrl: buildUrl + "/TestARWeb.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "ARWeb",
@@ -77,6 +77,7 @@
 
       document.addEventListener('onARSupportedCheck', function (event) {
         enterARButton.disabled = !event.detail.supported;
+        unityInstance.Module.WebXR.toggleAR();
       }, false);
       document.addEventListener('onVRSupportedCheck', function (event) {
         enterVRButton.disabled = !event.detail.supported;
