@@ -30,11 +30,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/TestARWeb.loader.js";
+      var loaderUrl = buildUrl + "/WebGLInteractions.loader.js";
       var config = {
-        dataUrl: buildUrl + "/TestARWeb.data",
-        frameworkUrl: buildUrl + "/TestARWeb.framework.js",
-        codeUrl: buildUrl + "/TestARWeb.wasm",
+        dataUrl: buildUrl + "/WebGLInteractions.data",
+        frameworkUrl: buildUrl + "/WebGLInteractions.framework.js",
+        codeUrl: buildUrl + "/WebGLInteractions.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "ARWeb",
@@ -69,10 +69,6 @@
             };
           }
 
-          if(isAR){
-            setTimeout(function(){document.getElementById('enterar').click()},4500);
-            
-          }
         }).catch((message) => {
           alert(message);
         });
