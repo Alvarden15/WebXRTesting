@@ -48,7 +48,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var unityInstance = null;
-      
+      var detectedAR = false;
 
       loadingBar.style.display = "block";
 
@@ -66,6 +66,10 @@
               unityInstance.SetFullscreen(1);
             };
           }
+          if(detectedAR){
+            unityInstance.Module.WebXR.toggleAR();
+          }
+
         }).catch((message) => {
           alert(message);
         });
@@ -77,7 +81,7 @@
 
       document.addEventListener('onARSupportedCheck', function (event) {
         enterARButton.disabled = !event.detail.supported;
-        unityInstance.Module.WebXR.toggleAR();
+        detectedAR = event.detail.supported;
       }, false);
       document.addEventListener('onVRSupportedCheck', function (event) {
         enterVRButton.disabled = !event.detail.supported;
