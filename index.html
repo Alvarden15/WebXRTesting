@@ -70,10 +70,8 @@
           }
 
           if(isAR){
-            setTimeout(function(){unityInstance.Module.WebXR.toggleAR()},5000);
+            setTimeout(function(){document.getElementById('enterar').click()},4500);
             
-          }else{
-            setTimeout(function(){alert("AR no disponible")},5000);
           }
         }).catch((message) => {
           alert(message);
