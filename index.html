@@ -2,16 +2,15 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | ARWeb</title>
+    <title>Unity WebGL Player | WebXR2025</title>
     <meta name="description" content="">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container">
-      <div id="unity-canvas-container" style="width: 100%; height: 100%;">
+      <div id="unity-canvas-container">
         <canvas id="unity-canvas" style="width: 100%; height: 100%;"></canvas>
       </div>
       <div id="unity-loading-bar">
@@ -25,20 +24,20 @@
         <button id="entervr" value="Enter VR" disabled>VR</button>
         <button id="enterar" value="Enter AR" disabled>AR</button>
         <div id="unity-webxr-link">Using <a href="https://github.com/De-Panther/unity-webxr-export" target="_blank" title="WebXR Export">WebXR Export</a></div>
-        <div id="unity-build-title">ARWeb</div>
+        <div id="unity-build-title">WebXR2025</div>
       </div>
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/WebGLInteractions.loader.js";
+      var loaderUrl = buildUrl + "/Web2025Third.loader.js";
       var config = {
-        dataUrl: buildUrl + "/WebGLInteractions.data",
-        frameworkUrl: buildUrl + "/WebGLInteractions.framework.js",
-        codeUrl: buildUrl + "/WebGLInteractions.wasm",
+        dataUrl: buildUrl + "/Web2025Third.data",
+        frameworkUrl: buildUrl + "/Web2025Third.framework.js",
+        codeUrl: buildUrl + "/Web2025Third.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "Sparxworks",
-        productName: "ARWeb",
-        productVersion: "0.1",
+        companyName: "DefaultCompany",
+        productName: "WebXR2025",
+        productVersion: "0.1.0",
       };
 
       var container = document.querySelector("#unity-container");
@@ -48,9 +47,10 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var unityInstance = null;
-      var isAR = false;
       
 
+      canvasContainer.style.width = "960px";
+      canvasContainer.style.height = "600px";
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
@@ -65,14 +65,8 @@
           {
             fullscreenButton.onclick = () => {
               unityInstance.SetFullscreen(1);
-              
             };
           }
-
-          //if(isAR){
-            //setTimeout(function(){document.getElementById('enterar').click()},4500);
-            
-          //}
         }).catch((message) => {
           alert(message);
         });
@@ -84,7 +78,6 @@
 
       document.addEventListener('onARSupportedCheck', function (event) {
         enterARButton.disabled = !event.detail.supported;
-        isAR = event.detail.supported;
       }, false);
       document.addEventListener('onVRSupportedCheck', function (event) {
         enterVRButton.disabled = !event.detail.supported;
